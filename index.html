@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>群馬県 ワクチン助成制度ガイド</title>
+    <meta name="description" content="群馬県内全市町村のワクチン予防接種助成制度に関する公式ページへご案内します。お住まいの市町村を選んでください。">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0e1a;
+            --bg-secondary: #111827;
+            --bg-card: rgba(30, 41, 70, 0.6);
+            --bg-card-hover: rgba(45, 60, 100, 0.7);
+            --border-card: rgba(100, 140, 220, 0.2);
+            --border-card-hover: rgba(100, 160, 255, 0.4);
+            --text-primary: #e8ecf4;
+            --text-secondary: #94a3c0;
+            --text-muted: #6b7a96;
+            --accent-primary: #3b82f6;
+            --accent-secondary: #6366f1;
+            --accent-green: #10b981;
+            --radius: 16px;
+            --radius-sm: 10px;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .bg-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-decoration .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .bg-decoration .orb:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            background: var(--accent-primary);
+            top: -100px;
+            right: -100px;
+        }
+
+        .bg-decoration .orb:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-secondary);
+            bottom: -50px;
+            left: -100px;
+            animation-delay: -7s;
+        }
+
+        .bg-decoration .orb:nth-child(3) {
+            width: 300px;
+            height: 300px;
+            background: var(--accent-green);
+            top: 40%;
+            left: 50%;
+            animation-delay: -14s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -30px) scale(1.05);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.95);
+            }
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 60px 0 32px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(59, 130, 246, .12);
+            border: 1px solid rgba(59, 130, 246, .25);
+            border-radius: 999px;
+            padding: 6px 18px;
+            font-size: .8rem;
+            font-weight: 500;
+            color: var(--accent-primary);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #e8ecf4, #94b8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: .95rem;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Selector */
+        .selector-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius);
+            padding: 32px;
+            margin-top: 36px;
+            backdrop-filter: blur(12px);
+            transition: border-color .3s;
+        }
+
+        .selector-panel:focus-within {
+            border-color: var(--border-card-hover);
+        }
+
+        .selector-label {
+            display: block;
+            font-size: .85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-wrapper::after {
+            content: '';
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 7px solid var(--text-muted);
+            pointer-events: none;
+            transition: border-top-color .3s;
+        }
+
+        .select-wrapper:focus-within::after {
+            border-top-color: var(--accent-primary);
+        }
+
+        .select-wrapper select {
+            width: 100%;
+            padding: 14px 48px 14px 18px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            transition: all .3s ease;
+        }
+
+        .select-wrapper select:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, .15);
+        }
+
+        .select-wrapper select option {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        /* Vaccine Links */
+        .vaccine-links {
+            margin-top: 28px;
+            display: none;
+        }
+
+        .vaccine-links.visible {
+            display: block;
+            animation: fadeInUp .4s ease;
+        }
+
+        .vaccine-links-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(100, 140, 220, .1);
+        }
+
+        .selected-city-name {
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .selected-city-badge {
+            font-size: .7rem;
+            font-weight: 500;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(59, 130, 246, .15);
+            color: #7da5f0;
+        }
+
+        .vaccine-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .vaccine-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 20px;
+            background: rgba(20, 30, 55, .7);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all .3s cubic-bezier(.25, .46, .45, .94);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vaccine-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            opacity: 0;
+            transition: opacity .3s;
+        }
+
+        .vaccine-btn:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-card-hover);
+            box-shadow: 0 8px 40px rgba(59, 130, 246, .15);
+            transform: translateY(-2px);
+        }
+
+        .vaccine-btn:hover::before {
+            opacity: 1;
+        }
+
+        .vaccine-btn .v-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .vaccine-btn .v-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .vaccine-btn .v-name {
+            font-size: .92rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .vaccine-btn .v-hint {
+            font-size: .72rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .vaccine-btn .v-hint svg {
+            width: 12px;
+            height: 12px;
+            flex-shrink: 0;
+        }
+
+        .vaccine-btn.corona .v-icon {
+            background: rgba(239, 68, 68, .15);
+            color: #f87171;
+        }
+
+        .vaccine-btn.corona::before {
+            background: linear-gradient(90deg, #ef4444, #f87171);
+        }
+
+        .vaccine-btn.influ .v-icon {
+            background: rgba(59, 130, 246, .15);
+            color: #60a5fa;
+        }
+
+        .vaccine-btn.influ::before {
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+        }
+
+        .vaccine-btn.pneumo .v-icon {
+            background: rgba(16, 185, 129, .15);
+            color: #34d399;
+        }
+
+        .vaccine-btn.pneumo::before {
+            background: linear-gradient(90deg, #10b981, #34d399);
+        }
+
+        .vaccine-btn.herpes .v-icon {
+            background: rgba(168, 85, 247, .15);
+            color: #c084fc;
+        }
+
+        .vaccine-btn.herpes::before {
+            background: linear-gradient(90deg, #8b5cf6, #c084fc);
+        }
+
+        .vaccine-btn.disabled {
+            opacity: .45;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .pdf-tag {
+            display: inline-block;
+            font-size: .6rem;
+            background: rgba(245, 158, 11, .2);
+            color: #fbbf54;
+            padding: 1px 5px;
+            border-radius: 3px;
+            margin-left: 4px;
+            vertical-align: 1px;
+            font-weight: 600;
+        }
+
+        .note-text {
+            margin-top: 14px;
+            font-size: .78rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            background: rgba(59, 130, 246, .05);
+            border-left: 3px solid rgba(59, 130, 246, .3);
+            padding: 10px 14px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 48px 0 32px;
+            border-top: 1px solid rgba(100, 140, 220, .08);
+            margin-top: 48px;
+        }
+
+        footer p {
+            font-size: .78rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 560px) {
+            .hero {
+                padding: 40px 0 24px;
+            }
+
+            .selector-panel {
+                padding: 24px 18px;
+            }
+
+            .vaccine-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .vaccine-btn {
+                padding: 14px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-decoration">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+    <div class="container">
+        <section class="hero">
+            <div class="hero-badge">🏥 群馬県 全35市町村対応</div>
+            <h1>ワクチン助成制度ガイド</h1>
+            <p>お住まいの市町村を選択すると、ワクチン種別ごとの助成制度に関する公式ページをご案内します。</p>
+        </section>
+
+        <div class="selector-panel">
+            <label class="selector-label" for="municipalitySelect">居住地の市町村を選択してください</label>
+            <div class="select-wrapper">
+                <select id="municipalitySelect">
+                    <option value="" disabled selected>▼ 市町村を選んでください</option>
+                    <optgroup label="── 市部 ──">
+                        <option value="前橋市">前橋市</option>
+                        <option value="高崎市">高崎市</option>
+                        <option value="桐生市">桐生市</option>
+                        <option value="伊勢崎市">伊勢崎市</option>
+                        <option value="太田市">太田市</option>
+                        <option value="沼田市">沼田市</option>
+                        <option value="館林市">館林市</option>
+                        <option value="渋川市">渋川市</option>
+                        <option value="藤岡市">藤岡市</option>
+                        <option value="富岡市">富岡市</option>
+                        <option value="安中市">安中市</option>
+                        <option value="みどり市">みどり市</option>
+                    </optgroup>
+                    <optgroup label="── 北群馬郡 ──">
+                        <option value="榛東村">榛東村</option>
+                        <option value="吉岡町">吉岡町</option>
+                    </optgroup>
+                    <optgroup label="── 多野郡 ──">
+                        <option value="上野村">上野村</option>
+                        <option value="神流町">神流町</option>
+                    </optgroup>
+                    <optgroup label="── 甘楽郡 ──">
+                        <option value="下仁田町">下仁田町</option>
+                        <option value="南牧村">南牧村</option>
+                        <option value="甘楽町">甘楽町</option>
+                    </optgroup>
+                    <optgroup label="── 吾妻郡 ──">
+                        <option value="中之条町">中之条町</option>
+                        <option value="長野原町">長野原町</option>
+                        <option value="嬬恋村">嬬恋村</option>
+                        <option value="草津町">草津町</option>
+                        <option value="高山村">高山村</option>
+                        <option value="東吾妻町">東吾妻町</option>
+                    </optgroup>
+                    <optgroup label="── 利根郡 ──">
+                        <option value="片品村">片品村</option>
+                        <option value="川場村">川場村</option>
+                        <option value="昭和村">昭和村</option>
+                        <option value="みなかみ町">みなかみ町</option>
+                    </optgroup>
+                    <optgroup label="── 佐波郡 ──">
+                        <option value="玉村町">玉村町</option>
+                    </optgroup>
+                    <optgroup label="── 邑楽郡 ──">
+                        <option value="板倉町">板倉町</option>
+                        <option value="明和町">明和町</option>
+                        <option value="千代田町">千代田町</option>
+                        <option value="大泉町">大泉町</option>
+                        <option value="邑楽町">邑楽町</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="vaccine-links" id="vaccineLinks">
+                <div class="vaccine-links-header">
+                    <span class="selected-city-name" id="selectedCityName"></span>
+                    <span class="selected-city-badge">ワクチン助成情報</span>
+                </div>
+                <div class="vaccine-grid" id="vaccineGrid"></div>
+                <div id="noteArea"></div>
+            </div>
+        </div>
+
+        <footer>
+            <p>各リンク先は各市町村公式サイトの予防接種助成関連ページです。<br>
+                情報は変更される場合があります。最新の情報は各市町村へ直接お問い合わせください。<br>
+                一部リンク先はPDFファイルです。<br>
+                © 2026 群馬県ワクチン助成制度ガイド</p>
+        </footer>
+    </div>
+
+    <script>
+        // ===== 市町村データ =====
+        // corona / influ / pneumo / herpes の各URLを保持。null = 調査中
+        const D = {
+            "前橋市": {
+                corona: "https://www.city.maebashi.gunma.jp/soshiki/kenko/hokenyobo/gyomu/2/1/3/40279.html",
+                influ: "https://www.city.maebashi.gunma.jp/soshiki/kenko/hokenyobo/gyomu/2/1/3/21192.html",
+                pneumo: "https://www.city.maebashi.gunma.jp/soshiki/kenko/hokenyobo/gyomu/2/1/3/4043.html",
+                herpes: "https://www.city.maebashi.gunma.jp/soshiki/hokenyobo/hokenyobo/gyomu/4/2/43675.html"
+            },
+            "高崎市": {
+                corona: "https://www.city.takasaki.gunma.jp/page/10019969.html",
+                influ: "https://www.city.takasaki.gunma.jp/page/3562.html",
+                pneumo: "https://www.city.takasaki.gunma.jp/page/3566.html",
+                herpes: "https://www.city.takasaki.gunma.jp/page/10019967.html"
+            },
+            "桐生市": {
+                corona: "https://www.city.kiryu.lg.jp/kurashi/kenko/otona/yobou/1024374.html",
+                influ: "https://www.city.kiryu.lg.jp/kurashi/kenko/otona/yobou/1001317.html",
+                pneumo: "https://www.city.kiryu.lg.jp/kurashi/kenko/otona/yobou/1000828.html",
+                herpes: "https://www.city.kiryu.lg.jp/kenko/hoken/yobousesshu/1024813.html"
+            },
+            "伊勢崎市": {
+                corona: "https://www.city.isesaki.lg.jp/iryo_kenko_fukushi/iryo_kenko/yobosesshu/otonanoyobosesshu/19911.html",
+                influ: "https://www.city.isesaki.lg.jp/soshiki/kensui/kenko_dukuri/hokenyobou/otona_1/3175.html",
+                pneumo: "https://www.city.isesaki.lg.jp/soshiki/kensui/kenko_dukuri/hokenyobou/otona_1/2092.html",
+                herpes: "https://www.city.isesaki.lg.jp/soshiki/kenkou/hoken/yobousessyu/21223.html"
+            },
+            "太田市": {
+                corona: "https://www.city.ota.gunma.jp/page/1955.html",
+                influ: "https://www.city.ota.gunma.jp/page/1955.html",
+                pneumo: "https://www.city.ota.gunma.jp/page/1955.html",
+                herpes: "https://www.city.ota.gunma.jp/page/1955.html",
+                note: "太田市は「大人の予防接種」総合ページ内で各ワクチン情報を案内しています。"
+            },
+            "沼田市": {
+                corona: null,
+                influ: "https://www.city.numata.gunma.jp/life/kenko/chusha/1011962/1002295.html",
+                pneumo: "https://www.city.numata.gunma.jp/life/kenko/chusha/1011962/1002297.html",
+                herpes: "https://www.city.numata.gunma.jp/life/kenko/chusha/1011962/1012980.html",
+                note: "沼田市のコロナワクチンは公式サイトで総合案内ページが確認できなかったため、市役所へ直接お問い合わせください。"
+            },
+            "館林市": {
+                corona: null,
+                influ: "https://www.city.tatebayashi.gunma.jp/s049/kenko/030/110/20210922171801.html",
+                pneumo: "https://www.city.tatebayashi.gunma.jp/s049/kenko/030/070/20200106235000.html",
+                herpes: "https://www.city.tatebayashi.gunma.jp/s049/kenko/030/180/20241218114423.html",
+                note: "館林市のコロナワクチンは公式サイトで総合案内ページが確認できなかったため、市役所へ直接お問い合わせください。"
+            },
+            "渋川市": {
+                corona: null,
+                influ: "https://www.city.shibukawa.lg.jp/kenkou/000081/000086/p008684.html",
+                pneumo: "https://www.city.shibukawa.lg.jp/kenkou/000081/000086/p008138.html",
+                herpes: "https://www.city.shibukawa.lg.jp/kurashi/hokenjo/yobousesshu/p009948.html",
+                note: "渋川市のコロナワクチンは公式サイトで総合案内ページが確認できなかったため、市役所へ直接お問い合わせください。"
+            },
+            "藤岡市": {
+                corona: "https://www.city.fujioka.gunma.jp/soshiki/kenko_hoken/2/1/2068.html",
+                influ: "https://www.city.fujioka.gunma.jp/soshiki/kenkohukushibu/kenkozukuri/2/3/2083.html",
+                pneumo: "https://www.city.fujioka.gunma.jp/soshiki/kenkohukushibu/kenkozukuri/2/3/2083.html",
+                herpes: "https://www.city.fujioka.gunma.jp/soshiki/kenko/hoken/yobosesshu/4768.html",
+                note: "藤岡市のインフルエンザ・肺炎球菌は「高齢者の予防接種」総合ページ内で案内しています。"
+            },
+            "富岡市": {
+                corona: "https://www.city.tomioka.lg.jp/www/contents/1723789836950/index.html",
+                influ: "https://www.city.tomioka.lg.jp/www/contents/1726227601733/index.html",
+                pneumo: "https://www.city.tomioka.lg.jp/www/contents/1000000000500/index.html",
+                herpes: "https://www.city.tomioka.lg.jp/www/contents/1740468751424/index.html"
+            },
+            "安中市": {
+                corona: "https://www.city.annaka.lg.jp/page/1877.html",
+                influ: "https://www.city.annaka.lg.jp/page/1901.html",
+                pneumo: "https://www.city.annaka.lg.jp/page/1870.html",
+                herpes: "https://www.city.annaka.lg.jp/page/1884.html"
+            },
+            "みどり市": {
+                corona: "https://www.city.midori.gunma.jp/kenkou/1001631/1005945/1004742/1006278.html",
+                influ: "https://www.city.midori.gunma.jp/kenkou/1001632/1005960/1002375.html",
+                pneumo: "https://www.city.midori.gunma.jp/kenkou/1001632/1005960/1005219.html",
+                herpes: "https://www.city.midori.gunma.jp/kenkou/1001632/1005960/1005366.html"
+            },
+            "榛東村": {
+                corona: "https://www.vill.shinto.gunma.jp/helth/000114/000124/p001009.html",
+                influ: "https://www.vill.shinto.gunma.jp/helth/000114/000117/p001010.html",
+                pneumo: "https://www.vill.shinto.gunma.jp/helth/000114/000117/p000749.html",
+                herpes: "https://www.vill.shinto.gunma.jp/helth/000114/000115/p000736.html"
+            },
+            "吉岡町": {
+                corona: "https://www.town.yoshioka.gunma.jp/fukushi/corona/post_180.html",
+                influ: "https://www.town.yoshioka.lg.jp/fukushi/kenko/otona/",
+                pneumo: "https://www.town.yoshioka.lg.jp/fukushi/kenko/otona/haien_kyukin_sessyu.html",
+                herpes: "https://www.town.yoshioka.gunma.jp/fukushi/kenko/otona/post_149.html",
+                note: "吉岡町のインフルエンザは「大人の予防接種」リンク集ページ内で案内しています。"
+            },
+            "上野村": {
+                corona: "https://www.uenomura.jp/yobousessyu25.html",
+                influ: "https://www.uenomura.jp/admin/health/kenkou/yobousessyu25.html",
+                pneumo: "https://www.uenomura.jp/admin/health/kenkou/yobousessyu25.html",
+                herpes: "https://www.uenomura.jp/soshiki/hoken/610.html",
+                note: "上野村のインフルエンザ・肺炎球菌は「予防接種について」総合ページ内で案内しています。"
+            },
+            "神流町": {
+                corona: null,
+                influ: "https://www.town.kanna.gunma.jp/soshiki/hokenfukushika/iryou_kenkou/yobou/gyouseisoti.html",
+                pneumo: "https://www.town.kanna.gunma.jp/soshiki/hokenfukushika/iryou_kenkou/yobou/yobousessyu_adult.html",
+                herpes: "https://www.town.kanna.gunma.jp/shisetsu/iryou/otona/3493.html",
+                note: "神流町のコロナワクチンは公式サイトで総合案内ページが確認できなかったため、役場へ直接お問い合わせください。"
+            },
+            "下仁田町": {
+                corona: null,
+                influ: "https://www.town.shimonita.lg.jp/hoken-kankyo/m01/m03/m15/m01/01.html",
+                pneumo: "https://www.town.shimonita.lg.jp/hoken-kankyo/m01/m03/m15/m01/08.html",
+                herpes: "https://www.town.shimonita.lg.jp/fukushi-kenko/kenko/post-350.html",
+                note: "下仁田町のコロナワクチンは公式サイトで総合案内ページが確認できなかったため、役場へ直接お問い合わせください。"
+            },
+            "南牧村": {
+                corona: "https://www.nanmoku.ne.jp/kurashi/kenkou/yobousesshu.html",
+                influ: null,
+                pneumo: null,
+                herpes: "https://nanmoku.ne.jp/lifehealth/health/vaccination/",
+                note: "南牧村のコロナ・帯状疱疹は予防接種案内ページ内で案内。インフルエンザ・肺炎球菌は公式サイトで個別ページが確認できなかったため、役場（TEL: 0274-87-2011）へお問い合わせください。"
+            },
+            "甘楽町": {
+                corona: null,
+                influ: "https://www.town.kanra.lg.jp/soumu/gyousei/koho/R6/osirase/koho-0701-18.pdf",
+                pneumo: "https://www.town.kanra.lg.jp/kenkou/hoken/news/20240412164328.html",
+                herpes: "https://www.town.kanra.lg.jp/kenko/iryou/yobosesshu/",
+                note: "甘楽町のコロナワクチンは公式サイトで総合案内ページが確認できなかったため、役場へ直接お問い合わせください。インフルエンザはPDF（広報おしらせ版）での案内です。"
+            },
+            "中之条町": {
+                corona: null,
+                influ: "https://www.town.nakanojo.gunma.jp/soshiki/6/4560.html",
+                pneumo: null,
+                herpes: "https://www.town.nakanojo.gunma.jp/soshiki/6/10421.html",
+                note: "中之条町のコロナ・肺炎球菌は公式サイトで個別ページが確認できなかったため、保健センター（TEL: 0279-75-8833）へお問い合わせください。"
+            },
+            "長野原町": {
+                corona: null,
+                influ: "https://www.town.naganohara.gunma.jp/www/contents/1758759198336/index.html",
+                pneumo: null,
+                herpes: "https://www.town.naganohara.gunma.jp/www/contents/1747879585755/index.html",
+                note: "長野原町のコロナ・肺炎球菌は公式サイトで個別ページが確認できなかったため、役場（TEL: 0279-82-2395）へお問い合わせください。"
+            },
+            "嬬恋村": {
+                corona: null,
+                influ: "https://www.vill.tsumagoi.gunma.jp/www/contents/1000000000169/index.html",
+                pneumo: "https://www.vill.tsumagoi.gunma.jp/www/contents/1660625896329/simple/kouhou2025_06HP.pdf",
+                herpes: "https://www.vill.tsumagoi.gunma.jp/www/contents/1660625896329/simple/kouhou2025_06HP.pdf",
+                note: "嬬恋村のコロナワクチンは公式サイトで総合案内ページが確認できなかったため、役場へ直接お問い合わせください。肺炎球菌・帯状疱疹は広報PDF内での案内です。"
+            },
+            "草津町": {
+                corona: "https://www.town.kusatsu.gunma.jp/www/contents/1485405716712/files/ideyu2510.pdf",
+                influ: "https://www.town.kusatsu.gunma.jp/www/contents/1485405716712/files/ideyu2510.pdf",
+                pneumo: null,
+                herpes: "https://www.town.kusatsu.gunma.jp/www/contents/1485405716712/files/ideyu2505.pdf",
+                note: "草津町のコロナ・インフルエンザ・帯状疱疹は広報誌PDFへのリンクです。肺炎球菌は個別ページが確認できなかったため、役場（TEL: 0279-88-7188）へお問い合わせください。"
+            },
+            "高山村": {
+                corona: "https://vill.takayama.gunma.jp/08hokenmirai/yobo-sesshu/koreisha-teikisesshu.html",
+                influ: "https://www.vill.takayama.gunma.jp/08hokenmirai/yobo-sesshu/nini-yobosesshu.html",
+                pneumo: null,
+                herpes: "https://www.vill.takayama.gunma.jp/08hokenmirai/yobo-sesshu/nini-yobosesshu.html",
+                note: "高山村のコロナは高齢者定期接種一覧ページ、インフル・帯状疱疹は任意予防接種助成ページ内で案内。肺炎球菌は個別ページが確認できなかったため、役場（TEL: 0279-63-2111）へお問い合わせください。"
+            },
+            "東吾妻町": {
+                corona: "https://www.town.higashiagatsuma.gunma.jp/www/contents/1727241623415/index.html",
+                influ: "https://www.town.higashiagatsuma.gunma.jp/www/contents/1379575478440/index.html",
+                pneumo: "https://www.town.higashiagatsuma.gunma.jp/www/contents/1412583221485/index.html",
+                herpes: "https://www.town.higashiagatsuma.gunma.jp/www/contents/1743487408843/index.html"
+            },
+            "片品村": {
+                corona: "https://www.vill.katashina.gunma.jp/gaiyou/kakuka/hoken/hoken/2024-0827-0846-38.html",
+                influ: "https://www.vill.katashina.gunma.jp/gaiyou/kakuka/hoken/hoken/2024-0827-0858-38.html",
+                pneumo: "https://www.vill.katashina.gunma.jp/gaiyou/kakuka/hoken/hoken/2023-0517-0950-38.html",
+                herpes: "https://www.vill.katashina.gunma.jp/gaiyou/kakuka/hoken/hoken/2023-0517-0950-38.html",
+                note: "片品村の帯状疱疹は任意予防接種費用助成ページ内で案内しています。"
+            },
+            "川場村": {
+                corona: "https://www.vill.kawaba.gunma.jp/kurashi/sonsei/kouhou/kouhou_kawaba/item/58f2861a5ef6f38cef423588cee0b5e8.pdf",
+                influ: "https://www.vill.kawaba.gunma.jp/kurashi/sonsei/kouhou/kouhou_kawaba/item/58f2861a5ef6f38cef423588cee0b5e8.pdf",
+                pneumo: "https://www.vill.kawaba.gunma.jp/kurashi/fukushi/iryou/haienkyukin.html",
+                herpes: "https://www.vill.kawaba.gunma.jp/kurashi/fukushi/iryou/post_7.html",
+                note: "川場村のコロナ・インフルエンザは広報PDF内での案内です。"
+            },
+            "昭和村": {
+                corona: "https://www.vill.showa.gunma.jp/kurashi/kenkou/joseiseido/2025-1107-1104-23.html",
+                influ: "https://www.vill.showa.gunma.jp/kurashi/kenkou/joseiseido/2025-1107-1104-23.html",
+                pneumo: "https://www.vill.showa.gunma.jp/kurashi/kenkou/joseiseido/2017-0227-1437-29.html",
+                herpes: "https://www.vill.showa.gunma.jp/kurashi/kenkou/joseiseido/2023-0421-1506-23.html"
+            },
+            "みなかみ町": {
+                corona: "https://www.town.minakami.gunma.jp/01news/2025/2025-0922-1058-43.html",
+                influ: "https://www.town.minakami.gunma.jp/life/07kenkou/yobousesshu/2016-1011-1820-12.html",
+                pneumo: "https://www.town.minakami.gunma.jp/life/07kenkou/yobousesshu/2018-0416-1049-71.html",
+                herpes: "https://www.town.minakami.gunma.jp/life/health/2025-0307-0849-31.html"
+            },
+            "玉村町": {
+                corona: "https://www.town.tamamura.lg.jp/docs/2024031200015/",
+                influ: "https://www.town.tamamura.lg.jp/docs/2021082000014/",
+                pneumo: "https://www.town.tamamura.lg.jp/docs/2020013100083/",
+                herpes: "https://www.town.tamamura.lg.jp/docs/2023031000038/"
+            },
+            "板倉町": {
+                corona: "https://www.town.itakura.gunma.jp/cont/s018000/d018010/d020011/20240826.html",
+                influ: "https://www.town.itakura.gunma.jp/d000020/d000010/d000020/index.html",
+                pneumo: "https://www.town.itakura.gunma.jp/cont/s018000/d018010/d020011/20170605104339.html",
+                herpes: "https://www.town.itakura.gunma.jp/cont/s018000/d018010/d020011/20250416180210.html",
+                note: "板倉町のインフルエンザは感染症情報・予防接種の総合リンク集ページから案内しています。"
+            },
+            "明和町": {
+                corona: "https://www.town.meiwa.gunma.jp/life/soshiki/kenkoukodomo/1/4/3693.html",
+                influ: "https://www.town.meiwa.gunma.jp/life/soshiki/kenkoukodomo/1/3/2280.html",
+                pneumo: "https://www.town.meiwa.gunma.jp/life/soshiki/kenkoukodomo/1/3/1025.html",
+                herpes: "https://www.town.meiwa.gunma.jp/life/soshiki/kenkoukodomo/1/3/3245.html"
+            },
+            "千代田町": {
+                corona: null,
+                influ: "https://www.town.chiyoda.gunma.jp/kenkou/kenkou/post-11.html",
+                pneumo: "https://www.town.chiyoda.gunma.jp/kenkou/kenkou/post-579.html",
+                herpes: "https://www.town.chiyoda.gunma.jp/education/welfare/post-660.html",
+                note: "千代田町のコロナワクチンは公式サイトで総合案内ページが確認できなかったため、役場へ直接お問い合わせください。"
+            },
+            "大泉町": {
+                corona: "https://www.town.oizumi.gunma.jp/s016/kenko/010/060/210/20210826194556.html",
+                influ: "https://www.town.oizumi.gunma.jp/s016/kenko/010/060/210/20210826194556.html",
+                pneumo: "https://www.town.oizumi.gunma.jp/s016/kenko/010/060/170/20200817224904.html",
+                herpes: "https://www.town.oizumi.gunma.jp/soshiki/14/yobo/4284.html",
+                note: "大泉町のコロナ・インフルエンザは同一ページ内で案内しています。"
+            },
+            "邑楽町": {
+                corona: null,
+                influ: "https://www.town.ora.gunma.jp/li/030/020/010/",
+                pneumo: "https://www.town.ora.gunma.jp/s053/030/020/010/koureisya_haienkyukin_teiki.html",
+                herpes: "https://www.town.ora.gunma.jp/welfare/health/immunization/1003810/1003664.html",
+                note: "邑楽町のコロナワクチンは公式サイトで総合案内ページが確認できなかったため、役場へ直接お問い合わせください。インフルエンザは健診・予防接種のリンク集ページから案内しています。"
+            }
+        };
+
+        // ===== SVG =====
+        const extSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+
+        // ===== Render =====
+        const select = document.getElementById('municipalitySelect');
+        const linksEl = document.getElementById('vaccineLinks');
+        const cityEl = document.getElementById('selectedCityName');
+        const gridEl = document.getElementById('vaccineGrid');
+        const noteEl = document.getElementById('noteArea');
+
+        const vaccines = [
+            { key: 'corona', icon: '🦠', label: '新型コロナ', cls: 'corona' },
+            { key: 'influ', icon: '🌡️', label: 'インフルエンザ', cls: 'influ' },
+            { key: 'pneumo', icon: '🫁', label: '肺炎球菌', cls: 'pneumo' },
+            { key: 'herpes', icon: '💉', label: '帯状疱疹', cls: 'herpes' }
+        ];
+
+        function isPdf(url) { return url && url.toLowerCase().endsWith('.pdf'); }
+
+        select.addEventListener('change', function () {
+            const city = this.value;
+            const info = D[city];
+            if (!info) return;
+
+            cityEl.textContent = city;
+            gridEl.innerHTML = '';
+            noteEl.innerHTML = '';
+
+            vaccines.forEach(v => {
+                const url = info[v.key];
+                if (url) {
+                    const pdf = isPdf(url);
+                    gridEl.innerHTML += `
+                <a class="vaccine-btn ${v.cls}" href="${url}" target="_blank" rel="noopener noreferrer">
+                    <div class="v-icon">${v.icon}</div>
+                    <div class="v-info">
+                        <div class="v-name">${v.label}${pdf ? '<span class="pdf-tag">PDF</span>' : ''}</div>
+                        <div class="v-hint">${extSvg} 公式サイトを開く</div>
+                    </div>
+                </a>`;
+                } else {
+                    gridEl.innerHTML += `
+                <div class="vaccine-btn ${v.cls} disabled">
+                    <div class="v-icon">${v.icon}</div>
+                    <div class="v-info">
+                        <div class="v-name">${v.label}</div>
+                        <div class="v-hint">窓口にてお問い合わせ</div>
+                    </div>
+                </div>`;
+                }
+            });
+
+            if (info.note) {
+                noteEl.innerHTML = `<div class="note-text">ℹ️ ${info.note}</div>`;
+            }
+
+            linksEl.classList.add('visible');
+            setTimeout(() => linksEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+        });
+    </script>
+</body>
+
+</html>
